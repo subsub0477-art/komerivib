@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>부산 음식 랭킹 – UI 클론</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#222;
+      --muted:#777;
+      --brand:#1064c1; /* 업로드 로고 컬러 계열에 맞춤 (블루톤) */
+      --brand-ink:#2f915e;
+      --line:#ececec;
+      --chip:#f6f7f8;
+      --shadow:0 2px 10px rgba(0,0,0,.06);
+      --radius:14px;
+      --container:1200px;
+
+      /* 고정 바 높이 (기본값, JS가 실제 높이로 덮어씀) */
+      --topbar-h:72px;
+      --subnav-h:56px;
+
+      /* 스크롤 오프셋 (실제 높이로 JS가 갱신) */
+      --scroll-offset: 120px; /* fallback */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Noto Sans KR",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","맑은 고딕",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      /* Fallback 패딩: 스크립트가 로드되면 실제 높이로 자동 보정됨 */
+      padding-top: calc(var(--topbar-h) + var(--subnav-h));
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+    /* Header (항상 고정) */
+    .topbar{
+      position:fixed; /* sticky → fixed */
+      top:0;left:0;right:0;
+      z-index:100;
+      background:#fff;
+      border-bottom:1px solid var(--line)
+    }
+    .topbar-inner{display:flex;align-items:center;gap:8px;height:72px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+    .logo-badge{width:36px;height:36px;border-radius:10px;background:#fff;display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:var(--shadow)}
+
+    .search{flex:1;display:flex;align-items:center;gap:10px;background:#f7f8f9;border:1px solid #e8e8e8;border-radius:999px;padding:10px 14px}
+    .chip-loc{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #e8e8e8;border-radius:999px;padding:6px 10px;cursor:pointer}
+    .chip-loc .dot{width:6px;height:6px;border-radius:50%;background:var(--brand)}
+    .search input{flex:1;border:0;outline:0;background:transparent;font-size:15px}
+    .search button{border:0;background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;cursor:pointer}
+    .util{display:flex;align-items:center;gap:12px}
+    .util .btn{padding:9px 12px;border-radius:10px;border:1px solid #e8e8e8;background:#fff}
+
+    /* Subnav chips (항상 고정) */
+    .subnav{
+      position:fixed; /* sticky → fixed */
+      top: var(--topbar-h);
+      left:0;right:0;
+      z-index:90;
+      background:#fff;
+      border-bottom:1px solid var(--line)
+    }
+    .chips{display:flex;gap:10px;overflow:auto;padding:14px 0}
+    .chip{white-space:nowrap;background:var(--chip);padding:8px 14px;border-radius:999px;border:1px solid #eee;font-weight:500;color:#333;cursor:pointer}
+    .chip.active{background:rgba(59,178,115,.12);color:var(--brand-ink);border-color:rgba(59,178,115,.25)}
+
+    /* Layout */
+    .layout{display:grid;grid-template-columns:1fr;gap:28px;padding:22px 0}
+    @media (max-width: 1024px){
+      .layout{grid-template-columns:1fr}
+    }
+
+    /* Section blocks */
+    .section{margin-bottom:34px}
+    .section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px}
+    .section-title{font-size:22px;font-weight:800}
+    .section-title .rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(59,178,115,.12);color:var(--brand-ink);font-size:14px;margin-right:8px}
+    .section-desc{color:var(--muted);font-size:13px}
+
+    /* ✅ 섹션 스크롤 위치를 살짝 위로 확보 */
+    .main .section{
+      scroll-margin-top: calc(var(--scroll-offset) + 8px); /* 8px은 여유 */
+    }
+
+    /* Cards grid */
+    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    @media (max-width: 1180px){.grid{grid-template-columns:repeat(4,1fr)}}
+    @media (max-width: 920px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width: 640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .card{border:1px solid #eee;border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .thumb{aspect-ratio:1/1;background:#eaeaea;display:grid;place-items:center;font-weight:700;color:#aaa}
+    .badges{position:absolute;display:flex;gap:6px;margin:10px}
+    .badge{background:rgba(0,0,0,.65);color:#fff;font-size:11px;padding:4px 8px;border-radius:999px}
+    .meta{padding:12px}
+    .name{font-weight:800;margin:2px 0 6px}
+    .stars{color:#f5a623;font-weight:800}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .tag{font-size:11px;background:#f5f6f7;border:1px solid #eee;padding:4px 8px;border-radius:999px;color:#444}
+
+    /* Right side */
+    .side{position:sticky;top:122px;height:fit-content;display:flex;flex-direction:column;gap:18px}
+    .panel{border:1px solid #eee;border-radius:16px;background:#fff;padding:16px;box-shadow:var(--shadow)}
+    .panel h4{margin:0 0 10px;font-size:15px}
+    .fake-map{height:280px;border-radius:12px;background:linear-gradient(135deg,#e6f6ee,#edf7ff);display:grid;place-items:center;color:#6c7a89;font-weight:700;border:1px dashed #cfe3d9}
+    .ad{height:120px;border-radius:12px;background:#f8f9fb;border:1px dashed #e0e3e9;display:grid;place-items:center;color:#9aa3ad}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:34px 0;margin-top:20px;color:#666;font-size:13px}
+    .footcols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
+    .footcols h5{margin:0 0 10px;font-size:13px;color:#222}
+    .footcols a{display:block;margin:6px 0;color:#666}
+    @media (max-width: 900px){.footcols{grid-template-columns:1fr 1fr}}
+
+    /* Simple helpers */
+    .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logo" href="#" aria-label="홈">
+        <div class="logo-badge" style="padding:0;background:#fff;border:1px solid #e8e8e8">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/4R3JRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABA..." alt="로고" style="width:36px;height:36px;border-radius:9px;display:block;object-fit:cover" />
+        </div>
+        <span>KOMERI 미음</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Sub navigation chips -->
+  <div class="subnav">
+    <div class="container">
+      <div class="chips" role="tablist" aria-label="카테고리">
+        <button class="chip active" role="tab">한식</button>
+        <button class="chip" role="tab">중식</button>
+        <button class="chip" role="tab">양식</button>
+        <button class="chip" role="tab">일식</button>
+        <button class="chip" role="tab">카페</button>
+        <button class="chip" role="tab">숙박 시설</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main layout -->
+  <main class="container layout">
+    <section class="main">
+      <!-- Section 1 -->
+      <div class="section" id="sec-1">
+        <div class="section-header">
+          <h2 class="section-title"><span class="rank">1</span>한식</h2>
+          <div class="section-desc">부산 대표 소울푸드 베스트</div>
+        </div>
+        <div class="grid">
+          <!-- 10 placeholder cards -->
+          <article class="card">
+            <div class="thumb">750×750</div>
+            <div class="meta">
+              <div class="name">가게명 예시</div>
+              <div class="stars" aria-label="평점">★ 4.6</div>
+              <div class="tags">
+                <span class="tag">부산진구</span>
+                <span class="tag">돼지국밥</span>
+              </div>
+            </div>
+          </article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.5</div><div class="tags"><span class="tag">서면</span><span class="tag">맑은국밥</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">남포</span><span class="tag">내장</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">연산</span><span class="tag">수육</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">북구</span><span class="tag">모듬</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.7</div><div class="tags"><span class="tag">해운대</span><span class="tag">직화</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">사상</span><span class="tag">옛맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.8</div><div class="tags"><span class="tag">광안</span><span class="tag">24시간</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">동래</span><span class="tag">깍두기</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">영도</span><span class="tag">올라</span></div></div></article>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="section" id="sec-2">
+        <div class="section-header">
+          <h2 class="section-title"><span class="rank">2</span>중식</h2>
+          <div class="section-desc">진득한 국물부터 깔끔한 쇼유까지</div>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">돈코츠</span><span class="tag">진구</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">쇼유</span><span class="tag">광안리</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.5</div><div class="tags"><span class="tag">츠케멘</span><span class="tag">사하</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">미소</span><span class="tag">대연</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">탄탄멘</span><span class="tag">해운대</span></div></div></article>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section" id="sec-3">
+        <div class="section-header">
+          <h2 class="section-title"><span class="rank">3</span>양식</h2>
+        <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section" id="sec-4">
+        <div class="section-header">
+          <h2 class="section-title"><span class="rank">4</span>일식</h2>
+          <div class="section-desc">오션뷰부터 로스터리까지</div>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.5</div><div class="tags"><span class="tag">오션뷰</span><span class="tag">해운대</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">브런치</span><span class="tag">광안리</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">로스터리</span><span class="tag">남포</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">디저트</span><span class="tag">수영</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">뷰맛집</span><span class="tag">송정</span></div></div></article>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="section" id="sec-5">
+        <div class="section-header">
+          <h2 class="section-title"><span class="rank">5</span>카페</h2>
+          <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="section" id="sec-6">
+        <div class="section-header">
+          <h2 class="section-title"><span class="rank">6</span>숙박시설</h2>
+          <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footcols">
+        <div>
+          <h5>KOMERI 미음</h5>
+          <p style="margin:6px 0 0;color:#888">기타 문의 : 신형섭 연구원 010-5405-6792</p>
+        </div>
+        <!-- <div>
+          <h5>지역</h5>
+          <a href="#">부산</a>
+          <a href="#">서울</a>
+          <a href="#">제주</a>
+        </div>
+        <div>
+          <h5>카테고리</h5>
+          <a href="#">국밥</a>
+          <a href="#">카페</a>
+          <a href="#">한식</a>
+        </div>
+        <div>
+          <h5>고객지원</h5>
+          <a href="#">문의하기</a>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+        </div> -->
+      </div>
+      <div style="margin-top:18px;color:#aaa">© 2025 KOMERI Vibration UI</div>
+    </div>
+  </footer>
+
+  <script>
+    // 아주 가벼운 인터랙션 데모 (지역 선택 드롭다운 모사)
+    // const locChip = document.getElementById('locChip');
+    // const locLabel = document.getElementById('locLabel');
+    // const locations = ['부산','해운대','광안리','서면','남포','동래'];
+    // let idx = 0;
+    // locChip?.addEventListener('click', ()=>{
+    //   idx = (idx+1) % locations.length;
+    //   locLabel.textContent = locations[idx];
+    //   const expanded = locChip.getAttribute('aria-expanded') === 'true';
+    //   locChip.setAttribute('aria-expanded', String(!expanded))
+    // });
+
+    // 스크롤 시 현재 섹션 칩 활성화 데모
+    const chipButtons = document.querySelectorAll('.chip');
+    const sections = Array.from(document.querySelectorAll('.main .section'));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const idx = sections.indexOf(e.target);
+          chipButtons.forEach(c=>c.classList.remove('active'));
+          if(chipButtons[idx]) chipButtons[idx].classList.add('active');
+        }
+      })
+    },{rootMargin:'-40% 0px -55% 0px',threshold:[0,1]});
+    sections.forEach(s=>s && io.observe(s));
+
+    // 칩 클릭 시 해당 섹션으로 스크롤
+    chipButtons.forEach((btn,i)=>btn.addEventListener('click',()=>{
+      sections[i]?.scrollIntoView({behavior:'smooth',block:'start'});
+    }));
+
+    // ▼ 고정된 Topbar/Subnav 실제 높이만큼 본문 패딩 + 스크롤 오프셋 변수 자동 보정
+    function setFixedOffsets(){
+      const top = document.querySelector('.topbar');
+      const sub = document.querySelector('.subnav');
+      const total = (top?.offsetHeight || 0) + (sub?.offsetHeight || 0);
+
+      // 본문 패딩 보정
+      document.body.style.paddingTop = total + 'px';
+      // 서브내비 위치도 실제 topbar 높이에 맞춰 보정
+      if (top && sub) sub.style.top = top.offsetHeight + 'px';
+
+      // ✅ 스크롤 오프셋 CSS 변수 업데이트 (scroll-margin-top 계산에 사용)
+      document.documentElement.style.setProperty('--scroll-offset', total + 'px');
+    }
+    window.addEventListener('load', setFixedOffsets);
+    window.addEventListener('resize', setFixedOffsets);
+  </script>
+</body>
+</html>
