@@ -82,7 +82,7 @@
     /* Section blocks */
     .section{margin-bottom:34px}
     .section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px}
-    .section-title{font-size:22px;font-weight:800}
+    .section-title{font-size:20px;font-weight:800}
     .section-title .rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:rgba(59,178,115,.12);color:var(--brand-ink);font-size:14px;margin-right:8px}
     .section-desc{color:var(--muted);font-size:13px}
 
@@ -102,7 +102,7 @@
     .badge{background:rgba(0,0,0,.65);color:#fff;font-size:11px;padding:4px 8px;border-radius:999px}
     .meta{padding:12px}
     .name{font-weight:800;margin:2px 0 6px}
-    .stars{color:#f5a623;font-weight:800}
+    /* .stars 제거됨 */
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
     .tag{font-size:11px;background:#f5f6f7;border:1px solid #eee;padding:4px 8px;border-radius:999px;color:#444}
 
@@ -158,7 +158,7 @@
       <div class="section" id="sec-1">
         <div class="section-header">
           <h2 class="section-title"><span class="rank">1</span>한식</h2>
-          <div class="section-desc">부산 대표 소울푸드 베스트</div>
+          <!-- <div class="section-desc">부산 대표 소울푸드 베스트</div> -->
         </div>
         <div class="grid">
           <!-- 10 placeholder cards -->
@@ -166,22 +166,24 @@
             <div class="thumb">750×750</div>
             <div class="meta">
               <div class="name">가게명 예시</div>
-              <div class="stars" aria-label="평점">★ 4.6</div>
               <div class="tags">
                 <span class="tag">부산진구</span>
                 <span class="tag">돼지국밥</span>
+                <span class="tag">엄준식1</span>
+                <span class="tag">엄준식2</span>
+                <span class="tag">엄준식3</span>
               </div>
             </div>
           </article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.5</div><div class="tags"><span class="tag">서면</span><span class="tag">맑은국밥</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">남포</span><span class="tag">내장</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">연산</span><span class="tag">수육</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">북구</span><span class="tag">모듬</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.7</div><div class="tags"><span class="tag">해운대</span><span class="tag">직화</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">사상</span><span class="tag">옛맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.8</div><div class="tags"><span class="tag">광안</span><span class="tag">24시간</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">동래</span><span class="tag">깍두기</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">영도</span><span class="tag">올라</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">서면</span><span class="tag">맑은국밥</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">남포</span><span class="tag">내장</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">연산</span><span class="tag">수육</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">북구</span><span class="tag">모듬</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">해운대</span><span class="tag">직화</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">사상</span><span class="tag">옛맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">광안</span><span class="tag">24시간</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">동래</span><span class="tag">깍두기</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">영도</span><span class="tag">올라</span></div></div></article>
         </div>
       </div>
 
@@ -189,14 +191,14 @@
       <div class="section" id="sec-2">
         <div class="section-header">
           <h2 class="section-title"><span class="rank">2</span>중식</h2>
-          <div class="section-desc">진득한 국물부터 깔끔한 쇼유까지</div>
+          <!-- <div class="section-desc">진득한 국물부터 깔끔한 쇼유까지</div> -->
         </div>
         <div class="grid">
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">돈코츠</span><span class="tag">진구</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">쇼유</span><span class="tag">광안리</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.5</div><div class="tags"><span class="tag">츠케멘</span><span class="tag">사하</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">미소</span><span class="tag">대연</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">탄탄멘</span><span class="tag">해운대</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">돈코츠</span><span class="tag">진구</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">쇼유</span><span class="tag">광안리</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">츠케멘</span><span class="tag">사하</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">미소</span><span class="tag">대연</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">탄탄멘</span><span class="tag">해운대</span></div></div></article>
         </div>
       </div>
 
@@ -204,14 +206,14 @@
       <div class="section" id="sec-3">
         <div class="section-header">
           <h2 class="section-title"><span class="rank">3</span>양식</h2>
-        <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div>
+        <!-- <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div> -->
         </div>
         <div class="grid">
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
         </div>
       </div>
 
@@ -219,14 +221,14 @@
       <div class="section" id="sec-4">
         <div class="section-header">
           <h2 class="section-title"><span class="rank">4</span>일식</h2>
-          <div class="section-desc">오션뷰부터 로스터리까지</div>
+          <!-- <div class="section-desc">오션뷰부터 로스터리까지</div> -->
         </div>
         <div class="grid">
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.5</div><div class="tags"><span class="tag">오션뷰</span><span class="tag">해운대</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">브런치</span><span class="tag">광안리</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">로스터리</span><span class="tag">남포</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">디저트</span><span class="tag">수영</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">뷰맛집</span><span class="tag">송정</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="tags"><span class="tag">오션뷰</span><span class="tag">해운대</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="tags"><span class="tag">브런치</span><span class="tag">광안리</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="tags"><span class="tag">로스터리</span><span class="tag">남포</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="tags"><span class="tag">디저트</span><span class="tag">수영</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">카페명 예시</div><div class="tags"><span class="tag">뷰맛집</span><span class="tag">송정</span></div></div></article>
         </div>
       </div>
 
@@ -234,14 +236,14 @@
       <div class="section" id="sec-5">
         <div class="section-header">
           <h2 class="section-title"><span class="rank">5</span>카페</h2>
-          <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div>
+          <!-- <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div> -->
         </div>
         <div class="grid">
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
         </div>
       </div>
 
@@ -249,14 +251,14 @@
       <div class="section" id="sec-6">
         <div class="section-header">
           <h2 class="section-title"><span class="rank">6</span>숙박시설</h2>
-          <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div>
+          <!-- <div class="section-desc">밥 비비기 좋은 매콤한 한 판</div> -->
         </div>
         <div class="grid">
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.4</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.3</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.2</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.6</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="stars">★ 4.1</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">중구</span><span class="tag">매운맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">사상</span><span class="tag">치즈</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">연산</span><span class="tag">순한맛</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">해운대</span><span class="tag">곱창듬뿍</span></div></div></article>
+          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">동래</span><span class="tag">낙지</span></div></div></article>
         </div>
       </div>
     </section>
@@ -269,42 +271,12 @@
           <h5>KOMERI 미음</h5>
           <p style="margin:6px 0 0;color:#888">기타 문의 : 신형섭 연구원 010-5405-6792</p>
         </div>
-        <!-- <div>
-          <h5>지역</h5>
-          <a href="#">부산</a>
-          <a href="#">서울</a>
-          <a href="#">제주</a>
-        </div>
-        <div>
-          <h5>카테고리</h5>
-          <a href="#">국밥</a>
-          <a href="#">카페</a>
-          <a href="#">한식</a>
-        </div>
-        <div>
-          <h5>고객지원</h5>
-          <a href="#">문의하기</a>
-          <a href="#">이용약관</a>
-          <a href="#">개인정보처리방침</a>
-        </div> -->
       </div>
-      <div style="margin-top:18px;color:#aaa">© 2025 KOMERI Vibration UI</div>
+      <div style="margin-top:18px;color:#aaa">© 2025 KOMERI Vibration Labs</div>
     </div>
   </footer>
 
   <script>
-    // 아주 가벼운 인터랙션 데모 (지역 선택 드롭다운 모사)
-    // const locChip = document.getElementById('locChip');
-    // const locLabel = document.getElementById('locLabel');
-    // const locations = ['부산','해운대','광안리','서면','남포','동래'];
-    // let idx = 0;
-    // locChip?.addEventListener('click', ()=>{
-    //   idx = (idx+1) % locations.length;
-    //   locLabel.textContent = locations[idx];
-    //   const expanded = locChip.getAttribute('aria-expanded') === 'true';
-    //   locChip.setAttribute('aria-expanded', String(!expanded))
-    // });
-
     // 스크롤 시 현재 섹션 칩 활성화 데모
     const chipButtons = document.querySelectorAll('.chip');
     const sections = Array.from(document.querySelectorAll('.main .section'));
