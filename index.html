@@ -90,7 +90,7 @@
     .thumb{aspect-ratio:1/1;background:#eaeaea;display:grid;place-items:center;font-weight:700;color:#aaa}
     .badges{position:absolute;display:flex;gap:6px;margin:10px}
     .badge{background:rgba(0,0,0,.65);color:#fff;font-size:11px;padding:4px 8px;border-radius:999px}
-    .meta{padding:6px}
+    .meta{padding:7px}
     .name{font-weight:400;margin:2px 0 6px}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
     .tag{font-size:11px;background:#f5f6f7;border:1px solid #eee;padding:4px 8px;border-radius:999px;color:#444}
@@ -150,10 +150,11 @@
           <h2 class="section-title"><span class="rank">1</span>한식</h2>
         </div>
         <div class="grid">
+
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/G38oS3Ko" target="_blank" rel="noopener" aria-label="영진돼지국밥 네이버로 이동">
-                <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib.github.io/981d283644f5467e188cc8e775cf4b5559e11212/%ED%95%9C%EC%8B%9D/1.png"
+                <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/981d283644f5467e188cc8e775cf4b5559e11212/%ED%95%9C%EC%8B%9D/1.png"
                     alt="영진돼지국밥"
                     style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
@@ -172,7 +173,7 @@
             <article class="card">
             <div class="thumb">
                 <a href="https://naver.me/F42ELhjL" target="_blank" rel="noopener" aria-label="솟대국수가 네이버로 이동">
-                <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib.github.io/b11d9841fcc29dbd1d779bb5418df6b8f3f02cd3/%ED%95%9C%EC%8B%9D/2.png"
+                <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/b11d9841fcc29dbd1d779bb5418df6b8f3f02cd3/%ED%95%9C%EC%8B%9D/2.png"
                     alt="솟대국수가"
                     style="width:100%;height:100%;object-fit:cover;display:block;" />
                 </a>
@@ -187,7 +188,26 @@
               </div>
             </div>
          </article>
-          <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">남포</span><span class="tag">내장</span></div></div></article>
+ 
+            <article class="card">
+            <div class="thumb">
+                <a href="https://naver.me/5OQyBgSx" target="_blank" rel="noopener" aria-label="가야포차선지국밥 네이버로 이동">
+                <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/28be6122e717ff143b6866f7755b18eb7a41e360/%ED%95%9C%EC%8B%9D/3.png"
+                    alt="가야포차선지국밥"
+                    style="width:100%;height:100%;object-fit:cover;display:block;" />
+                </a>
+            </div>
+            <div class="meta">
+                <div class="name">가야포차선지국밥</div>
+                <div class="tags">
+                  <span class="tag">수구레국밥</span>
+                  <span class="tag">소고기국밥</span>
+                  <span class="tag">선지국밥</span>
+              </div>
+            </div>
+         </article>
+                  
+          <!-- <article class="card"><div class="thumb">750×750</div><div class="meta"><div class="name">가게명 예시</div><div class="tags"><span class="tag">남포</span><span class="tag">내장</span></div></div></article> -->
         </div>
       </div>
 
@@ -293,7 +313,7 @@
       sections[i]?.scrollIntoView({behavior:'smooth',block:'start'});
     }));
 
-    // Topbar/Subnav 실제 높이만큼 본문 패딩 + 스크롤 오프셋 변수 자동 보정
+    // Topbar/Subnav 실제 높이만큼 본문 패딩 + 스크롤 오프셋 변수 자동 보정 
     function setFixedOffsets(){
       const top = document.querySelector('.topbar');
       const sub = document.querySelector('.subnav');
