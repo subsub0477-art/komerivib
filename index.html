@@ -102,7 +102,7 @@
     /* ---- 링크 느낌(얇고 연한 밑줄) + 아이콘 밑줄 제거 ---- */
     .soft-link{
       margin:0;
-      color:#888;                         /* 기본 회색 */
+      color:#2563eb;                         /* 기본 회색 */
       display:inline-flex;                /* 아이콘 정렬 */
       align-items:center;
       gap:4px;
@@ -123,7 +123,7 @@
       opacity:.5;
       transform:translateY(-1px);
       transition:opacity .15s ease, transform .15s ease;
-      text-decoration:none;               /* 안전장치 */
+      text-decoration:none;              
     }
     .soft-link:hover,
     .soft-link:focus-visible{
@@ -140,9 +140,8 @@
       opacity:.9;
       transform:translateY(-1px) translateX(1px);
     }
-    .soft-link:visited{ color:#7c3aed; }  /* 방문 링크 색 */
+    .soft-link:visited{ color:#2563eb; }  
 
-    /* color-mix 폴백 */
     @supports not (color: color-mix(in srgb, black, white)) {
       .soft-link__label{ text-decoration-color: rgba(136,136,136,.35); }
       .soft-link:hover .soft-link__label,
@@ -434,7 +433,7 @@
       <div class="footcols">
         <div>
           <h5>KOMERI 미음</h5>
-          <p style="margin:6px 0 0;color:#888">기타 문의 : 신형섭 연구원 010-5405-6792</p>
+          <p style="margin:6px 0 0;color:#888">기타 문의 : 신형섭 연구원 *010-5405-6792</p>
           <!-- 아이콘에는 밑줄이 없는 버전 -->
           <a class="soft-link"
              href="https://docs.google.com/forms/d/e/1FAIpQLScpx0ZUIw8D0kcRcMbP73TDhYuGAyTDjwGPs9X2qEKFtX1xdg/viewform?usp=sharing&ouid=103189224402877914604"
