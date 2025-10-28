@@ -143,6 +143,31 @@
     .card .meta {padding: 4px 8px 10px;}
     .card .name-row {margin: 0;}
     .card .tags {margin-top: 6px;}
+
+    /* ===== 고객의 소리 아이콘 ===== */
+    .feedback-btn{
+      position: fixed;
+      right: 22px;
+      bottom: 24px;
+      z-index: 200;               /* 헤더(100)보다 위 */
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .feedback-btn:hover{ transform: translateY(-1px); }
+    .feedback-btn img{
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -565,6 +590,11 @@
       <div style="margin-top:18px;color:#aaa">© 2025 KOMERI Vibration Labs</div>
     </div>
   </footer>
+
+  <!-- 고객의 소리 아이콘 -->
+  <a class="feedback-btn" href="#" aria-label="고객의 소리">
+    <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/0b789c32934cff308170be31ff409752d0020786/Feedback%20Icon.png" alt="고객의 소리 아이콘">
+  </a>
 
   <script>
     const chipButtons = document.querySelectorAll('.chip');
