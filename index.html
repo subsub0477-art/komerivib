@@ -35,14 +35,8 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin:0 auto;padding:0 5px}
 
-    /* Header 항상 고정 */
-    .topbar{
-      position:fixed;
-      top:0;left:0;right:0;
-      z-index:100;
-      background:#fff;
-      border-bottom:1px solid var(--line)
-    }
+    /* Header */
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--line)}
     .topbar-inner{display:flex;align-items:center;gap:8px;height:62px}
     .logo{display:flex;align-items:center;gap:10px;font-weight:100;font-size:23px}
     .logo-badge{width:36px;height:36px;border-radius:10px;background:#fff;display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:var(--shadow)}
@@ -55,70 +49,33 @@
     .util{display:flex;align-items:center;gap:12px}
     .util .btn{padding:9px 12px;border-radius:10px;border:1px solid #e8e8e8;background:#fff}
 
-    /* Subnav 항상 고정 */
-    .subnav{
-      position:fixed; 
-      top: var(--topbar-h);
-      left:0;right:0;
-      z-index:90;
-      background:#fff;
-      border-bottom:1px solid var(--line)
-    }
+    /* Subnav */
+    .subnav{position:fixed;top:var(--topbar-h);left:0;right:0;z-index:90;background:#fff;border-bottom:1px solid var(--line)}
     .chips{display:flex;gap:10px;overflow:auto;padding:10px 0;}
     .chip{white-space:nowrap;background:var(--chip);padding:8px 14px;border-radius:999px;border:1px solid #eee;font-weight:500;color:#333;cursor:pointer}
     .chip.active{background:rgba(59,178,115,.12);color:var(--brand-ink);border-color:rgba(59,178,115,.25)}
 
     .layout{display:grid;grid-template-columns:1fr;gap:28px;padding:2px 0}
-    @media (max-width: 1024px){
-      .layout{grid-template-columns:1fr}
-    }
+    @media (max-width: 1024px){.layout{grid-template-columns:1fr}}
 
     .section{margin-bottom:14px}
     .section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1px;padding-left:6px;}
     .section-title{font-size:19px;font-weight:650;margin:1;line-height:1.2;}
     .section-title .rank{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:rgba(59,178,115,.12);color:var(--brand-ink);font-size:15px;margin-right:8px}
     .section-desc{color:#777;font-size:13px}
-
     .main .section{scroll-margin-top: calc(var(--scroll-offset) + 8px);}
 
-    /* Cards grid */
+    /* Cards */
     .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-    @media (max-width: 1180px){.grid{grid-template-columns:repeat(4,1fr)}}
-    @media (max-width: 920px){.grid{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width: 640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:1180px){.grid{grid-template-columns:repeat(4,1fr)}}
+    @media (max-width:920px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
     .card{border:1px solid #eee;border-radius:16px;overflow:hidden;background:#fff;box-shadow:var(--shadow);display:flex;flex-direction:column}
     .thumb{aspect-ratio:1/1;background:#eaeaea;display:grid;place-items:center;font-weight:700;color:#aaa}
-    .badges{position:absolute;display:flex;gap:6px;margin:10px}
-    .badge{background:rgba(0,0,0,.65);color:#fff;font-size:11px;padding:4px 8px;border-radius:999px}
     .meta{padding:7px}
-
-    /* 이름 + 위치 한 줄 (오른쪽 고정) */
-    .name-row{
-      display:flex;
-      align-items:baseline;
-      gap:8px;
-      flex-wrap:wrap;       
-      margin:2px 0 0;
-    }
-    .name{
-      font-weight:700;
-      font-size:16px;
-      flex:1;
-      min-width:0;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      font-family: "Gowun Batang", "Gowun Dodum", "Noto Sans KR", serif;
-    }
-    .place{
-      font-family:"Gowun Dodum", sans-serif;
-      font-size:12px;
-      color:#6b7280;
-      line-height:1;
-      margin-left:auto;
-      white-space:nowrap;
-    }
-
+    .name-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 0 0;}
+    .name{font-weight:700;font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:"Gowun Batang","Gowun Dodum","Noto Sans KR",serif;}
+    .place{font-family:"Gowun Dodum",sans-serif;font-size:12px;color:#6b7280;line-height:1;margin-left:auto;white-space:nowrap;}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
     .tag{font-size:11px;background:#f5f6f7;border:1px solid #eee;padding:4px 8px;border-radius:999px;color:#444}
 
@@ -131,18 +88,68 @@
     footer{border-top:1px solid var(--line);padding:34px 0;margin-top:20px;color:#666;font-size:13px}
     .footcols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px}
     .footcols h5{margin:0 0 10px;font-size:13px;color:#222}
-    .footcols a{display:block;margin:6px 0;color:#666}
-    @media (max-width: 900px){.footcols{grid-template-columns:1fr 1fr}}
+    /* footer의 일반 링크는 block, soft-link는 제외 */
+    .footcols a:not(.soft-link){display:block;margin:6px 0;color:#666}
+    @media (max-width:900px){.footcols{grid-template-columns:1fr 1fr}}
 
     .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-
-    /* 이미지 클릭/터치 */
     .thumb a{display:block;width:100%;height:100%}
     .thumb a:active{transform:scale(.98)}
+    .card .meta{padding:4px 8px 10px;}
+    .card .name-row{margin:0;}
+    .card .tags{margin-top:6px;}
 
-    .card .meta {padding: 4px 8px 10px;}
-    .card .name-row {margin: 0;}
-    .card .tags {margin-top: 6px;}
+    /* ---- 링크 느낌(얇고 연한 밑줄) + 아이콘 밑줄 제거 ---- */
+    .soft-link{
+      margin:0;
+      color:#888;                         /* 기본 회색 */
+      display:inline-flex;                /* 아이콘 정렬 */
+      align-items:center;
+      gap:4px;
+      cursor:pointer;
+      transition: color .15s ease;
+    }
+    /* 밑줄은 label에만 적용 */
+    .soft-link__label{
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 0.8px;
+      text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+      transition: text-decoration-thickness .15s ease,
+                  text-decoration-color .15s ease;
+    }
+    /* 아이콘은 밑줄 없음 */
+    .soft-link__icon{
+      opacity:.5;
+      transform:translateY(-1px);
+      transition:opacity .15s ease, transform .15s ease;
+      text-decoration:none;               /* 안전장치 */
+    }
+    .soft-link:hover,
+    .soft-link:focus-visible{
+      color:#2563eb;
+      outline:none;
+    }
+    .soft-link:hover .soft-link__label,
+    .soft-link:focus-visible .soft-link__label{
+      text-decoration-thickness: 1.1px;
+      text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+    }
+    .soft-link:hover .soft-link__icon,
+    .soft-link:focus-visible .soft-link__icon{
+      opacity:.9;
+      transform:translateY(-1px) translateX(1px);
+    }
+    .soft-link:visited{ color:#7c3aed; }  /* 방문 링크 색 */
+
+    /* color-mix 폴백 */
+    @supports not (color: color-mix(in srgb, black, white)) {
+      .soft-link__label{ text-decoration-color: rgba(136,136,136,.35); }
+      .soft-link:hover .soft-link__label,
+      .soft-link:focus-visible .soft-link__label{
+        text-decoration-color: rgba(37,99,235,.55);
+      }
+    }
   </style>
 </head>
 <body>
@@ -151,8 +158,8 @@
       <a class="logo" href="#" aria-label="홈">
         <div class="logo-badge" style="padding:0;background:transparent;border:none;box-shadow:none">
           <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib.github.io/a817aaa6e95141ccb256f4ec63ddd0fbbb729c24/Logo.jpg"
-              alt="로고"
-              style="width:38px;height:38px;border-radius:9px;display:block;object-fit:cover" />
+               alt="로고"
+               style="width:38px;height:38px;border-radius:9px;display:block;object-fit:cover" />
         </div>
         <span>KOMERI 미음</span>
       </a>
@@ -186,21 +193,12 @@
             <div class="thumb">
               <a href="https://naver.me/G38oS3Ko" target="_blank" rel="noopener" aria-label="영진돼지국밥 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/981d283644f5467e188cc8e775cf4b5559e11212/%ED%95%9C%EC%8B%9D/1.png"
-                    alt="영진돼지국밥"
-                    style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="영진돼지국밥" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">영진돼지국밥</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">부산 3대 돼지국밥</span>
-                <span class="tag">순대</span>
-                <span class="tag">수육백반</span>
-                <span class="tag">본점 아님</span>
-              </div>
+              <div class="name-row"><div class="name">영진돼지국밥</div></div>
+              <div class="tags"><span class="tag">부산 3대 돼지국밥</span><span class="tag">순대</span><span class="tag">수육백반</span><span class="tag">본점 아님</span></div>
             </div>
           </article>
 
@@ -208,20 +206,12 @@
             <div class="thumb">
               <a href="https://naver.me/F42ELhjL" target="_blank" rel="noopener" aria-label="솟대국수가 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/b11d9841fcc29dbd1d779bb5418df6b8f3f02cd3/%ED%95%9C%EC%8B%9D/2.png"
-                    alt="솟대국수가" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="솟대국수가" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">솟대국수가</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">육회비빔밥</span>
-                <span class="tag">돌솥비빔밥</span>
-                <span class="tag">육전비빔국수</span>
-                <span class="tag">멸치국수</span>
-              </div>
+              <div class="name-row"><div class="name">솟대국수가</div></div>
+              <div class="tags"><span class="tag">육회비빔밥</span><span class="tag">돌솥비빔밥</span><span class="tag">육전비빔국수</span><span class="tag">멸치국수</span></div>
             </div>
           </article>
 
@@ -229,20 +219,12 @@
             <div class="thumb">
               <a href="https://naver.me/5z58TdKb" target="_blank" rel="noopener" aria-label="강변보쌈 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/018871865aa6f6ba5cc2fd4d58861b88b43a199f/%ED%95%9C%EC%8B%9D/4.png"
-                    alt="강변보쌈" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="강변보쌈" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">강변보쌈</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">수육보쌈</span>
-                <span class="tag">된장찌개</span>
-                <span class="tag">두루치기</span>
-                <span class="tag">청국장</span>
-              </div>
+              <div class="name-row"><div class="name">강변보쌈</div></div>
+              <div class="tags"><span class="tag">수육보쌈</span><span class="tag">된장찌개</span><span class="tag">두루치기</span><span class="tag">청국장</span></div>
             </div>
           </article>
 
@@ -250,20 +232,12 @@
             <div class="thumb">
               <a href="https://naver.me/GeURRQr5" target="_blank" rel="noopener" aria-label="우정옥 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/4d81b24128a48d12e01566e73d92f31fb58c4786/%ED%95%9C%EC%8B%9D/6.png"
-                    alt="우정옥" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="우정옥" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">우정옥</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">육개장</span>
-                <span class="tag">갈비탕</span>
-                <span class="tag">소머리곰탕</span>
-                <span class="tag">설렁탕</span>
-              </div>
+              <div class="name-row"><div class="name">우정옥</div></div>
+              <div class="tags"><span class="tag">육개장</span><span class="tag">갈비탕</span><span class="tag">소머리곰탕</span><span class="tag">설렁탕</span></div>
             </div>
           </article>
 
@@ -271,18 +245,12 @@
             <div class="thumb">
               <a href="https://naver.me/5bVmzoUG" target="_blank" rel="noopener" aria-label="삼거리식당 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/8c416ca7e6e47a337a623508272efca7e2afee9f/%ED%95%9C%EC%8B%9D/5.png"
-                    alt="삼거리식당" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="삼거리식당" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">삼거리식당</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">맑은 추어탕</span>
-                <span class="tag">문어숙회</span>
-              </div>
+              <div class="name-row"><div class="name">삼거리식당</div></div>
+              <div class="tags"><span class="tag">맑은 추어탕</span><span class="tag">문어숙회</span></div>
             </div>
           </article>
 
@@ -290,172 +258,112 @@
             <div class="thumb">
               <a href="https://naver.me/5OQyBgSx" target="_blank" rel="noopener" aria-label="가야포차선지국밥 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/28be6122e717ff143b6866f7755b18eb7a41e360/%ED%95%9C%EC%8B%9D/3.png"
-                    alt="가야포차선지국밥" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="가야포차선지국밥" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">가야포차선지국밥</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">수구레국밥</span>
-                <span class="tag">소고기국밥</span>
-                <span class="tag">선지국밥</span>
-              </div>
+              <div class="name-row"><div class="name">가야포차선지국밥</div></div>
+              <div class="tags"><span class="tag">수구레국밥</span><span class="tag">소고기국밥</span><span class="tag">선지국밥</span></div>
             </div>
           </article>
         </div>
       </div>
 
+      <!-- Section 2 -->
       <div class="section" id="sec-2">
-        <div class="section-header">
-          <h2 class="section-title"><span class="rank">2</span>중식</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title"><span class="rank">2</span>중식</h2></div>
         <div class="grid">
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/xzxPirdG" target="_blank" rel="noopener" aria-label="열라삼신짬뽕 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/becf16f758c7fc55e498ea0e7bdcd245218c67a0/%EC%A4%91%EC%8B%9D/1.png"
-                    alt="열라삼신짬뽕" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="열라삼신짬뽕" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">열라삼신짬뽕</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">삼신짜장</span>
-                <span class="tag">삼신짬뽕</span>
-                <span class="tag">찹쌀탕수육</span>
-                <span class="tag">4단계 맵기</span>
-              </div>
+              <div class="name-row"><div class="name">열라삼신짬뽕</div></div>
+              <div class="tags"><span class="tag">삼신짜장</span><span class="tag">삼신짬뽕</span><span class="tag">찹쌀탕수육</span><span class="tag">4단계 맵기</span></div>
             </div>
           </article>
-
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/xxYNwkl2" target="_blank" rel="noopener" aria-label="경마장 돌짜장 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/b458a3acc9be88c567e8a1185eacbd1721940308/%EC%A4%91%EC%8B%9D/2.png"
-                    alt="경마장 돌짜장" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="경마장 돌짜장" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">경마장 돌짜장</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">돌짜장 맛집</span>
-                <span class="tag">돌짬뽕</span>
-                <span class="tag">크런치 탕수육</span>
-                <span class="tag">군만두</span>
-              </div>
+              <div class="name-row"><div class="name">경마장 돌짜장</div></div>
+              <div class="tags"><span class="tag">돌짜장 맛집</span><span class="tag">돌짬뽕</span><span class="tag">크런치 탕수육</span><span class="tag">군만두</span></div>
             </div>
           </article>
         </div>
       </div>
 
+      <!-- Section 3 -->
       <div class="section" id="sec-3">
-        <div class="section-header">
-          <h2 class="section-title"><span class="rank">3</span>양식</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title"><span class="rank">3</span>양식</h2></div>
         <div class="grid">
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/Gn0yy73J" target="_blank" rel="noopener" aria-label="브라운돈까스 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/a8aa54b8104c28d33b810262e2cebd561c794c6a/%EC%96%91%EC%8B%9D/1.png"
-                    alt="브라운돈까스" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="브라운돈까스" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">브라운돈까스</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">경양식돈까스</span>
-                <span class="tag">든든함</span>
-                <span class="tag">치즈돈까스</span>
-                <span class="tag">제주돼지</span>
-              </div>
+              <div class="name-row"><div class="name">브라운돈까스</div></div>
+              <div class="tags"><span class="tag">경양식돈까스</span><span class="tag">든든함</span><span class="tag">치즈돈까스</span><span class="tag">제주돼지</span></div>
             </div>
           </article>
-
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/5ner2bbE" target="_blank" rel="noopener" aria-label="뉴욕버거 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/b611f55af1782d30e82a238431d98553bfa82737/%EC%96%91%EC%8B%9D/3.png"
-                    alt="뉴욕버거" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="뉴욕버거" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">뉴욕버거</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">수제버거</span>
-                <span class="tag">프랜차이즈</span>
-                <span class="tag">두툼한 패티</span>
-                <span class="tag">치킨버거</span>
-              </div>
+              <div class="name-row"><div class="name">뉴욕버거</div></div>
+              <div class="tags"><span class="tag">수제버거</span><span class="tag">프랜차이즈</span><span class="tag">두툼한 패티</span><span class="tag">치킨버거</span></div>
             </div>
           </article>
         </div>
       </div>
 
+      <!-- Section 4 -->
       <div class="section" id="sec-4">
-        <div class="section-header">
-          <h2 class="section-title"><span class="rank">4</span>일식</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title"><span class="rank">4</span>일식</h2></div>
         <div class="grid">
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/GalEFD8L" target="_blank" rel="noopener" aria-label="참치와아저씨 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/c77bb884e16077458086bc40f1065c4ffcdfddd7/%EC%9D%BC%EC%8B%9D/1.png"
-                    alt="참치와아저씨" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="참치와아저씨" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">참치와아저씨</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">참치덮밥</span>
-                <span class="tag">참치가마구이</span>
-                <span class="tag">가마도로</span>
-                <span class="tag">일본풍</span>
-              </div>
+              <div class="name-row"><div class="name">참치와아저씨</div></div>
+              <div class="tags"><span class="tag">참치덮밥</span><span class="tag">참치가마구이</span><span class="tag">가마도로</span><span class="tag">일본풍</span></div>
             </div>
           </article>
         </div>
       </div>
 
+      <!-- Section 5 -->
       <div class="section" id="sec-5">
-        <div class="section-header">
-          <h2 class="section-title"><span class="rank">5</span>카페</h2>
-        </div>
+        <div class="section-header"><h2 class="section-title"><span class="rank">5</span>카페</h2></div>
         <div class="grid">
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/Fy23AJsA" target="_blank" rel="noopener" aria-label="카페 월하 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/2d3677a0783beed6f77c3812033c114b1a08d91b/%EC%B9%B4%ED%8E%98/1.png"
-                    alt="카페 월하" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="카페 월하" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">카페 월하</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">월하라떼</span>
-                <span class="tag">버터 커스타드</span>
-                <span class="tag">디카페인 콜드브루</span>
-              </div>
+              <div class="name-row"><div class="name">카페 월하</div></div>
+              <div class="tags"><span class="tag">월하라떼</span><span class="tag">버터 커스타드</span><span class="tag">디카페인 콜드브루</span></div>
             </div>
           </article>
 
@@ -463,49 +371,31 @@
             <div class="thumb">
               <a href="https://naver.me/FCAVgA5L" target="_blank" rel="noopener" aria-label="진선진미베이커리 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/d0984d81f4ff63402eb49a19a28d6f55e83b4c56/%EC%B9%B4%ED%8E%98/2.png"
-                    alt="진선진미베이커리" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="진선진미베이커리" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">진선진미베이커리</div>
-                <!-- <div class="place">미음</div> -->
-              </div>
-              <div class="tags">
-                <span class="tag">네이버 4.8</span>
-                <span class="tag">프랑스 전통</span>
-                <span class="tag">좋은 재료</span>
-                <span class="tag">일,월,목 휴무</span>
-              </div>
+              <div class="name-row"><div class="name">진선진미베이커리</div></div>
+              <div class="tags"><span class="tag">네이버 4.8</span><span class="tag">프랑스 전통</span><span class="tag">좋은 재료</span><span class="tag">일,월,목 휴무</span></div>
             </div>
           </article>
         </div>
       </div>
 
+      <!-- Section 6 -->
       <div class="section" id="sec-6">
-        <div class="section-header">
-          <h2 class="section-title"><span class="rank">6</span>숙박시설</h2>
-        </div>
-
+        <div class="section-header"><h2 class="section-title"><span class="rank">6</span>숙박시설</h2></div>
         <div class="grid">
           <article class="card">
             <div class="thumb">
               <a href="https://naver.me/GJTHwMFN" target="_blank" rel="noopener" aria-label="레전드호텔 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/b8e1ef32223b525c76bcc1fca57d8671c4e2efc2/%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4/1.png"
-                    alt="레전드호텔" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="레전드호텔" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">레전드호텔</div>
-                <div class="place">미음</div>
-              </div>
-              <div class="tags">
-                <span class="tag">도보 2분</span>
-                <span class="tag">비즈니스 호텔</span>
-                <span class="tag">조식 제공</span>
-                <span class="tag">무료 프린트</span>
-              </div>
+              <div class="name-row"><div class="name">레전드호텔</div><div class="place">미음</div></div>
+              <div class="tags"><span class="tag">도보 2분</span><span class="tag">비즈니스 호텔</span><span class="tag">조식 제공</span><span class="tag">무료 프린트</span></div>
             </div>
           </article>
 
@@ -513,19 +403,12 @@
             <div class="thumb">
               <a href="https://naver.me/xTT6naaC" target="_blank" rel="noopener" aria-label="신라스테이 서부산 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/20c45f8896b17a80d2794d2de1340cb2a4153717/%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4/3-1.png"
-                    alt="신라스테이 서부산" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="신라스테이 서부산" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">신라스테이 서부산</div>
-                <div class="place">명지</div>
-              </div>
-              <div class="tags">
-                <span class="tag">차로 35분</span>
-                <span class="tag">명지 번화가</span>
-                <span class="tag">대중 교통 1시간 10분</span>
-              </div>
+              <div class="name-row"><div class="name">신라스테이 서부산</div><div class="place">명지</div></div>
+              <div class="tags"><span class="tag">차로 35분</span><span class="tag">명지 번화가</span><span class="tag">대중 교통 1시간 10분</span></div>
             </div>
           </article>
           
@@ -533,20 +416,12 @@
             <div class="thumb">
               <a href="https://naver.me/FIfsRQtJ" target="_blank" rel="noopener" aria-label="파인그로브 호텔 네이버로 이동">
                 <img src="https://raw.githubusercontent.com/subsub0477-art/komerivib/be3cb69254047abea7bc6930d76bab4bc260ba15/%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4/2-1.png"
-                    alt="파인그로브" style="width:100%;height:100%;object-fit:cover;display:block;" />
+                     alt="파인그로브" style="width:100%;height:100%;object-fit:cover;display:block;" />
               </a>
             </div>
             <div class="meta">
-              <div class="name-row">
-                <div class="name">파인그로브 호텔</div>
-                <div class="place">율하</div>
-              </div>
-              <div class="tags">
-                <span class="tag">차로 20분</span>
-                <span class="tag">율하 번화가</span>
-                <span class="tag">대중 교통 x</span>
-                <span class="tag">깔끔한 시설</span>
-              </div>
+              <div class="name-row"><div class="name">파인그로브 호텔</div><div class="place">율하</div></div>
+              <div class="tags"><span class="tag">차로 20분</span><span class="tag">율하 번화가</span><span class="tag">대중 교통 x</span><span class="tag">깔끔한 시설</span></div>
             </div>
           </article>
         </div>
@@ -560,6 +435,13 @@
         <div>
           <h5>KOMERI 미음</h5>
           <p style="margin:6px 0 0;color:#888">기타 문의 : 신형섭 연구원 010-5405-6792</p>
+          <!-- 아이콘에는 밑줄이 없는 버전 -->
+          <a class="soft-link"
+             href="https://docs.google.com/forms/d/e/1FAIpQLScpx0ZUIw8D0kcRcMbP73TDhYuGAyTDjwGPs9X2qEKFtX1xdg/viewform?usp=sharing&ouid=103189224402877914604"
+             target="_blank" rel="noopener">
+            <span class="soft-link__label">마음의 소리</span>
+            <span class="soft-link__icon" aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
       <div style="margin-top:18px;color:#aaa">© 2025 KOMERI Vibration Labs</div>
@@ -584,7 +466,6 @@
       sections[i]?.scrollIntoView({behavior:'smooth',block:'start'});
     }));
 
-    // Topbar/Subnav 실제 높이만큼 본문 패딩 + 스크롤 오프셋 변수 자동 보정 
     function setFixedOffsets(){
       const top = document.querySelector('.topbar');
       const sub = document.querySelector('.subnav');
